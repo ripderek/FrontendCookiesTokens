@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import Router from 'next/router' //Rutas para redireccionar a otra pagina
+
 function Login() {
     const [user, setUser] = useState({
         email: "",
@@ -10,28 +12,25 @@ function Login() {
     const HandleSUbumit = async (e) => {
         e.preventDefault();
         console.log("asd");
-        //setLoading(true);
-        /*
-        const result = await fetch("http://localhost:4000/api/auth/login", {
-          method: "POST",
-          body: JSON.stringify(user),
-          headers: { "Content-Type": "application/json" },
-        }); */
 
-        const result = await axios.post(
-            "http://localhost:4000/api/auth/login",
-            user,
-            {
-                withCredentials: true,
-            }
-        );
-        //res.setHeader("Set-Cookie", serialized);
-        //console.log(response);
-        const cookies = new Cookies();
-        cookies.set("myTokenName", result.data, { path: "/" }); //enviar cokiee y almacenarla
-        //para usar la cookie cookies.get('nombrecookie')
-        console.log(result.data);
-        console.log(user);
+        try {
+            const result = await axios.post(
+                "http://localhost:4000/api/auth/login",
+                user,
+                {
+                    withCredentials: true,
+                }
+            );
+
+            const cookies = new Cookies();
+            cookies.set("myTokenName", result.data, { path: "/" }); //enviar cokiee y almacenarla
+            console.log(result.data);
+            console.log(user);
+            Router.push('/task/tasklist/')
+        } catch (error) {
+            console.log(error);
+        }
+
     };
 
     const HandleChange = (e) => {
@@ -46,7 +45,7 @@ function Login() {
                 <input
                     type="text"
                     placeholder="email"
-                    className="border-slate-800 border-solid border-2 mr-3 ml-3"
+                    className="border-slate-800 border-solid border-2 mr-3 ml-3 bg-black"
                     onChange={HandleChange}
                     name="email"
                     id="email"
@@ -54,7 +53,7 @@ function Login() {
                 <input
                     type="text"
                     placeholder="password"
-                    className="border-slate-800 border-solid border-2 mr-3 ml-3"
+                    className="border-slate-800 border-solid border-2 mr-3 ml-3 bg-black"
                     onChange={HandleChange}
                     name="password"
                 />

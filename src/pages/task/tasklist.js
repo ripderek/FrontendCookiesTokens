@@ -3,6 +3,8 @@ import Taskcard from "./taskcard";
 //se importa este modulo de react para las rutas
 //import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Router from 'next/router' //Rutas para redireccionar a otra pagina
+
 
 function Taklist() {
   //se guarda la funcion navigate en una constante
@@ -32,8 +34,8 @@ function Taklist() {
         <button
           className="ml-14 bg-zinc-50 p-2 hover:bg-blue-700 rounded-md
         border-blue-700 border-2 border-solid"
-        // aqui se envia al formulario de crear
-        >
+          // aqui se envia al formulario de crear
+          onClick={() => Router.push('/task/createtask/')}>
           Agregar
         </button>
       </div>

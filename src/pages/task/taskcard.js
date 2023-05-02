@@ -23,7 +23,7 @@ function Taskcard({ task }) {
                 <button
                     className="bg-zinc-50 p-2 hover:bg-blue-700 rounded-md
         border-blue-700 border-2 border-solid"
-                    onClick={() => Router.push('/task/edittaks')} //para redireccionar a otra pagina al dar click
+                    onClick={() => Router.push('/task/' + task.ida)} //para redireccionar a otra pagina al dar click
                 >
                     {task.ida}
                 </button>
