@@ -44,6 +44,8 @@ function Taklist() {
           <Taskcard key={task.ida} task={task} />
         ))}
       </div>
+      <img src="http://localhost:4000/api/taks/img" width={"30%"} />
+
     </div>
   );
 }

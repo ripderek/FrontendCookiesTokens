@@ -1,0 +1,4 @@
+Mover el archivo middleware a la altura del src para que funke la verificacion de los tokens 
+Si se quiere hacer pruebas sin los tokens entonces mover a otro lugar el middleware.js
+
+npm run dev 
